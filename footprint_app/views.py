@@ -10,5 +10,7 @@ def home(request: HttpRequest) -> HttpResponse:
     return render(request, 'home.html')
 
 
-def env(request: HttpRequest) -> HttpResponse:
-    return JsonResponse(dict(os.environ), safe=False)
+
+def hello(request: HttpRequest) -> HttpResponse:
+    """"""
+    return HttpResponse("Not Hello world")

@@ -5,15 +5,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Carbon Footprint calculator 2 </title>
+  <title>Carbon Footprint calculator  </title>
   <meta name="description" content="A simple HTML5 Template for new projects.">
   <meta name="author" content="SitePoint">
-
+  
+  <link rel="shortcut icon" href="https://img.icons8.com/doodle/344/swamp.png"> 
   <meta property="og:title" content="A Basic HTML5 Template">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.sitepoint.com/a-basic-html5-template/">
   <meta property="og:description" content="A simple HTML5 Template for new projects.">
-  <meta property="og:image" content="image.png">
+  <meta property="og:image" content="https://twemoji.maxcdn.com/2/svg/1f3d5.svg">
 
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -21,133 +22,106 @@
 </head>
 
 <body>
-  <!-- your content here... -->
-  
-  <div class="px-4 md:px-6 xl:px-20 2xl:mx-auto 2xl:container">
-    <!-- Navigation Start -->
-    <nav class="py-12 hidden lg:block f-s-s-p">
-        <div class="flex items-center justify-between w-full">
-            <div class="flex items-center">
-                <div aria-label="Logo" role="img">
-                    <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/center_aligned_with_search_bar-svg1.svg" alt="logo"/>
-                </div>
-                {% comment %} <div class="flex items-center  pl-10 lg:pl-6 xl:pl-10 cursor-pointer">
-                    <p class="text-sm text-indigo-800 dark:text-indigo-400 font-semibold">View all categories</p>
-                    <div class="pl-2 mt-1 text-indigo-700">
-                        <div role="button" aria-label="how orHide categories" data-menu1 class="dark:bg-white px-0.5 py-1 cursor-pointer focus:outline-none focus:ring-2 focus:ring-gray-500 rounded">
-                            <img id="andicators2" class="" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/center_aligned_with_search_bar-Svg-1.svg" alt="chevron-down"/>
-                            <img id="andicators3" class="hidden transform rotate-180" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/center_aligned_with_search_bar-Svg-1.svg" alt="chevron-up"/> 
-                        </div>
-                        <ul class="bg-white p-4  shadow-lg hidden duration-300 opacity-100 absolute z-30 -ml-24" id="listHolder1">
-                            <li class="hover:opacity-75 mt-1">All Category</li>
-                            <li class="hover:opacity-75 mt-1">Mobile Phone</li>
-                            <li class="hover:opacity-75 mt-1">Tablets</li>
-                        </ul>
-                    </div>
-                </div> {% endcomment %}
-            </div>
-            <div class="flex justify-between items-center">
-                {% comment %} <div>
-                    <ul class="cursor-pointer flex items-center text-sm text-gray-500 font-semibold">
-                        <li class="hover:opacity-75 dark:text-white"><a href="javascript:void(0)" class="focus:ring-2 focus:ring-gray-500">Mobile phones</a></li>
-                        <li class="lg:pl-6 pl-10 xl:pl-10 dark:text-white cursor-pointer hover:opacity-75"><a href="javascript:void(0)" class="focus:ring-2 focus:ring-gray-500">Automobiles</a></li>
-                        <li class="lg:pl-6 pl-10 xl:pl-10 dark:text-white cursor-pointer hover:opacity-75"><a href="javascript:void(0)" class="focus:ring-2 focus:ring-gray-500">Houses</a></li>
-                        <li class="lg:pl-6 pl-10 xl:pl-10 dark:text-white cursor-pointer hover:opacity-75"><a href="javascript:void(0)" class="focus:ring-2 focus:ring-gray-500">Electronics </a></li>
-                        <li class="lg:pl-6 pl-10 xl:pl-10 dark:text-white cursor-pointer hover:opacity-75"><a href="javascript:void(0)" class="focus:ring-2 focus:ring-gray-500">Tablets</a></li>
-                    </ul>
-                </div> {% endcomment %}
-                <div class="pl-12 lg:pl-6 xl:pl-12 flex items-center">
-                    <div class="pl-10 lg:pl-6 xl:pl-10 flex items-center">
-                        <div class="flex items-center">
-                        </div>
-                    </div>
-                    <div class="pl-10 lg:pl-6 xl:pl-10">
-                        <button class="py-3 px-8 bg-indigo-700 line-height14 text-white text-sm lg:text-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 hover:opacity-75">
-                            Add 
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <!-- Mobile Responsive -->
-    <nav class="lg:hidden">
-        <div class="flex py-2 justify-between items-center px-4 py-6">
-            <img src="https://cdn.tuk.dev/assets/templates/classified/Logo2.png" alt="Logo." role="img" />
-            <div class="visible flex items-center">
-                <div class="xl:hidden">
-                    <button class="focus:ring-2 focus:ring-gray-500 focus:outline-none" onclick="MenuHandler(true)">
-                        <img id="open" class="" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/center_aligned_with_search_bar-svg11.svg"  alt="open"/>
-                    </button>
-                    <button id="close" class="hidden close-m-menu focus:ring-2 focus:ring-gray-500 focus:outline-none" onclick="MenuHandler(false)">
-                        <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/center_aligned_with_search_bar-svg12.svg" alt="close"/>
-                    </button>
-                </div>
-                <ul id="list" class="hidden p-2 border-r bg-white absolute rounded top-0 left-0 right-0 shadow mt-20 md:mt-20">
-                    <li class="flex cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none">
-                        <a href="javascript:void(0)" class="ml-2 focus:ring-2 focus:ring-gray-500">
-                            <span class=" font-bold">Mobile Phones</span>
-                        </a>
-                    </li>
-                    <li class="flex cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none" onclick="dropdownHandler(this)">
-                        <a href="javascript:void(0)" class=" ml-2 focus:ring-2 focus:ring-gray-500">
-                            <span class=" font-bold">Automobiles</span>
-                        </a>
-                    </li>
-                    <li class="flex cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 flex items-center focus:text-indigo-700 focus:outline-none">
-                        <a href="javascript:void(0)" class=" ml-2 focus:ring-2 focus:ring-gray-500">
-                            <span class=" font-bold">Houses</span>
-                        </a>
-                    </li>
-                    <li class="flex cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none" onclick="dropdownHandler(this)">
-                        <a href="javascript:void(0)" class="ml-2 focus:ring-2 focus:ring-gray-500">
-                            <span class=" font-bold">Electronics</span>
-                        </a>
-                    </li>
-                    <li class="flex cursor-pointer text-gray-600 text-sm leading-3 tracking-normal pt-2 pb-4 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none" onclick="dropdownHandler(this)">
-                            <a href="javascript:void(0)" class="ml-2 focus:ring-2 focus:ring-gray-500">
-                                <span class=" font-bold">Tablets</span>
-                            </a>
-                    </li>
-                </ul>
-                
-            </div>
-        </div>
-    </nav>
-    <!-- Hero -->
 
-    <div class="flex w-full flex-col items-center justif-center py-16 xl:px-0 px-4">
-        <h1 class="lg:text-6xl text-3xl text-indigo-800 dark:text-indigo-400 font-bold text-center">Search what you need to find carbon fotprint</h1>
-        <h2 class="text-lg text-gray-500 mt-6 dark:text-gray-200 text-center lg:mb-0 mb-4">Over 10000</h2>
-        <div class="flex flex-col w-full sm:w-1/2 md:ml-4 mt-3 md:mt-10">
-            <div class="relative w-full">
-                <div class="lg:absolute bg-gray-100 lg:border-r lg:border-t lg:border-b lg:mb-0 mb-4 lg:py-5 py-3 border-gray-600 cursor-pointer flex items-center justify-between pr-3 right-0 h-full z-30" data-menu2>
-                    <p class="lg:text-2xl text-lg leading-tight tracking-normal text-gray-700 px-4">All Categories</p>
-                    <button role="button" aria-label="Show/hide filter list" class="focus:outline-none focus:ring-2 focus:ring-gray-500 rounded">
-                        <img id="andicators4" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/center_aligned_with_search_bar-svg2.svg" alt="down"/>
-                        <img id="andicators5" class="hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/center_aligned_with_search_bar-svg3.svg" alt="up"/>
-                    </button>
-                    {% comment %} <ul aria-label="filter" class="bg-white w-64 shadow-lg p-4 hidden duration-300 opacity-100 mt-56 absolute z-40 lg:-ml-16" id="listHolder2">
-                        <li class="hover:opacity-75 py-3 text-base">All Category</li>
-                        <li class="hover:opacity-75 py-3 text-base">Mobile Phones</li>
-                        <li class="hover:opacity-75 py-3 text-base">Tablets</li>
-                    </ul> {% endcomment %}
-                </div>
-                <div class="absolute inset-0 lg:mt-0 mt-8 w-16 text-gray-700 flex items-center pl-6 h-full lg:py-5 z-20">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
-                        <circle cx="11.6667" cy="11.6667" r="8.16667" stroke="#4A5568" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M24.5 24.5L17.5 17.5" stroke="#4A5568" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                </div>
-                <input id="search" class="w-full text-text-gray-600 focus:outline-none focus:border font-normal pl-16 pr-24 lg:py-5 py-2 placeholder-gray-600 flex items-center text-2xl border-gray-600 rounded border relative z-10" placeholder="Search" />
-            </div>
-        </div>
-        <div class="sm:flex justify-center items-center pt-12">
-            <button class="w-full sm:w-auto py-3 text-center lg:leading-6 px-8 bg-indigo-700 text-white lg:text-2xl border border border-indigo-700 hover:opacity-75 text-lg mr-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700">Search</button>
-            <button class="w-full sm:w-auto mt-4 sm:mt-0 py-3 text-center lg:leading-6 px-8 bg-transparent border border border-indigo-700 border border-indigo-700 text-indigo-700 text-text-indigo-700 hover:opacity-75 lg:text-2xl text-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700">Advance Search</button>
-        </div>
+      <!-- your content here... -->
+  <div class="bg-cover bg-[url('https://i.imgur.com/UFBdWXb.jpg')] h-screen" id="bg-image">
+    <div class="px-4 md:px-6 xl:px-20 2xl:mx-auto 2xl:container">
+      <!-- Navigation Start -->
+      <nav class="py-12 hidden lg:block f-s-s-p">
+          <div class="flex items-center justify-between w-full">
+              <div class="flex items-center">
+                  <div aria-label="Logo" role="img">
+                      <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/center_aligned_with_search_bar-svg1.svg" alt="logo"/>
+                  </div>
+                  
+              </div>
+              <div class="flex justify-between items-center">
+                 
+                  <div class="pl-12 lg:pl-6 xl:pl-12 flex items-center">
+                      <div class="pl-10 lg:pl-6 xl:pl-10 flex items-center">
+                          <div class="flex items-center">
+                          </div>
+                      </div>
+                      <div class="pl-10 lg:pl-6 xl:pl-10">
+                          <button class="py-3 px-8 bg-indigo-700 line-height14 text-white text-sm lg:text-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 hover:opacity-75">
+                              Add 
+                          </button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </nav>
+      <!-- Mobile Responsive -->
+      <nav class="lg:hidden">
+          <div class="flex py-2 justify-between items-center px-4 py-6">
+              <img src="https://cdn.tuk.dev/assets/templates/classified/Logo2.png" alt="Logo." role="img" />
+              <div class="visible flex items-center">
+                  <div class="xl:hidden">
+                      <button class="focus:ring-2 focus:ring-gray-500 focus:outline-none" onclick="MenuHandler(true)">
+                          <img id="open" class="" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/center_aligned_with_search_bar-svg11.svg"  alt="open"/>
+                      </button>
+                      <button id="close" class="hidden close-m-menu focus:ring-2 focus:ring-gray-500 focus:outline-none" onclick="MenuHandler(false)">
+                          <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/center_aligned_with_search_bar-svg12.svg" alt="close"/>
+                      </button>
+                  </div>
+                  
+              </div>
+          </div>
+      </nav>
+      <!-- Hero -->
+  
+      <div class="flex w-full flex-col items-center justif-center py-16 xl:px-0 px-4">
+          <h1 class="lg:text-6xl text-3xl text-white dark:text-indigo-400 font-bold text-center">
+            Search carbon footprints of over 10000 things!</h1>
+          <h2 class="text-xl text-gray-300 mt-6 dark:text-gray-200 text-center lg:mb-0 mb-4">
+            Get human readable results in real time
+            </h2>
+          <div class="flex flex-col w-full sm:w-1/2 md:ml-4 mt-3 md:mt-10">
+              <div class="relative w-full">
+                  <div class="absolute inset-0 lg:mt-0 mt-8 w-16 text-gray-700 flex items-center pl-6 h-full lg:py-5 z-20">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                          <circle cx="11.6667" cy="11.6667" r="8.16667" stroke="#4A5568" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+                          <path d="M24.5 24.5L17.5 17.5" stroke="#4A5568" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                  </div>
+                  <input id="search" class="w-full text-text-gray-600 focus:outline-none focus:border font-normal pl-16 pr-24 lg:py-5 py-2 placeholder-gray-600 flex items-center text-2xl border-gray-600 rounded border relative z-10" placeholder="Search" />
+              </div>
+          </div>
+          <!--<div class="sm:flex justify-center items-center pt-12">
+              <button class="w-full sm:w-auto py-3 text-center lg:leading-6 px-8 bg-indigo-700 text-white lg:text-2xl border border border-indigo-700 hover:opacity-75 text-lg mr-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700">Search</button>
+              <button class="w-full sm:w-auto mt-4 sm:mt-0 py-3 text-center lg:leading-6 px-8 bg-transparent border border border-indigo-700 border border-indigo-700 text-indigo-700 text-text-indigo-700 hover:opacity-75 lg:text-2xl text-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700">Advance Search</button>
+          </div>-->
+      </div>
+  </div>
     </div>
-</div>
+  
+  
+  
+  
+  
+  <style>
+  
+   .bg-image {
+    /* The image used */
+    background-image: url("https://i.imgur.com/BYAQU3n.jpg");
+  
+    /* Add the blur effect */
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+  
+    /* Full height */
+    height: 100%;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+    </style>
+
+</body>
+  <!-- your content here... -->
 <style>
     /* Navbar */
     .top-100 {
