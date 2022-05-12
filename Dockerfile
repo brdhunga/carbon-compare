@@ -1,25 +1,26 @@
-FROM python:3.8-alpine
+ARG PYTHON_VERSION=3.7
 
-# Set environment variables
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONFAULTHANDLER 1
-ENV PYTHONUNBUFFERED 1
+FROM python:${PYTHON_VERSION}
 
-RUN apk update && apk add --no-cache \
-    # Required for installing/upgrading postgres, Pillow, etc:
-    gcc python3-dev \
-    # Required for installing/upgrading postgres:
-    postgresql-libs postgresql-dev musl-dev
+RUN apt-get update && apt-get install -y \
+    python3-pip \
+    python3-venv \
+    python3-dev \
+    python3-setuptools \
+    python3-wheel
 
-# Set work directory
-RUN mkdir /code
-WORKDIR /code
+RUN mkdir -p /app
+WORKDIR /app
 
-# Install dependencies into a virtualenv
-RUN pip install --upgrade pipenv
-COPY ./Pipfile .
-COPY ./Pipfile.lock .
-RUN pipenv install --dev --deploy
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
-# Copy project code
-COPY . /code/
+COPY . .
+
+RUN python manage.py collectstatic --noinput
+
+
+EXPOSE 8080
+
+# replace APP_NAME with module name
+CMD ["gunicorn", "--bind", ":8080", "--workers", "2", "ecoProject.wsgi"]
