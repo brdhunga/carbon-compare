@@ -19,6 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # This step checks out a copy of your repository.
+      - run: echo "$NAME"
       - uses: actions/checkout@v2
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - run: flyctl deploy --remote-only
