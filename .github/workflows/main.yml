@@ -25,4 +25,5 @@ jobs:
       - run: flyctl deploy --remote-only
         env:
           FLY_API_TOKEN: EgoU4fy4TqX5qeDldzsHegYwSDNISo2r_Ht_WAgx_p8
+          NAME: 'raj babu'
 
