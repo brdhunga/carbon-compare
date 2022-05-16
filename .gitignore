@@ -138,4 +138,5 @@ GitHub.sublime-settings
 .history
 
 staticfiles/
-*.pyc 
+*.pyc
+.idea/
