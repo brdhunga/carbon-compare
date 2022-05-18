@@ -18,6 +18,7 @@
 
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
 
 </head>
 
@@ -25,117 +26,133 @@
 
 
 <div class="h-full w-full h-screen bg-cover bg-[url('https://i.imgur.com/UFBdWXb.jpg')] h-screen bg-green-700">
-            <!-- Code block starts -->
+    <!-- Code block starts -->
     {% include 'fragments/nav.html' %}
 
 
-    <br />
-    <br />
-    <br />
-       <br />
-    <br />
-    <br />
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
     <div class="flex w-full flex-col items-center justif-center py-16 xl:px-0 px-4">
-          <h1 class="lg:text-6xl text-3xl text-white dark:text-indigo-400 font-bold text-center">
+        <h1 class="lg:text-6xl text-3xl text-white dark:text-indigo-400 font-bold text-center">
             Search carbon footprints of over 10000 things!</h1>
-          <h2 class="text-xl text-gray-300 mt-6 dark:text-gray-200 text-center lg:mb-0 mb-4">
+        <h2 class="text-xl text-gray-300 mt-6 dark:text-gray-200 text-center lg:mb-0 mb-4">
             Get human readable results in real time
-            </h2>
-          <div class="flex flex-col w-full sm:w-1/2 md:ml-4 mt-3 md:mt-10">
-              <div class="relative w-full">
-                  <div class="absolute inset-0 mt-0 mt-8 w-16 text-gray-700 flex items-center pl-6 h-full lg:py-5 z-20">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
-                          <circle cx="11.6667" cy="11.6667" r="8.16667" stroke="#4A5568" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></circle>
-                          <path d="M24.5 24.5L17.5 17.5" stroke="#4A5568" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
-                      </svg>
-                  </div>
-                  <input id="search" class="w-full text-text-gray-600 focus:outline-none focus:border font-normal pl-16 pr-24 lg:py-5 py-2 placeholder-gray-600 flex items-center text-2xl border-gray-600 rounded border relative z-10" placeholder="Search">
-              </div>
-          </div>
-          <!--<div class="sm:flex justify-center items-center pt-12">
-              <button class="w-full sm:w-auto py-3 text-center lg:leading-6 px-8 bg-indigo-700 text-white lg:text-2xl border border border-indigo-700 hover:opacity-75 text-lg mr-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700">Search</button>
-              <button class="w-full sm:w-auto mt-4 sm:mt-0 py-3 text-center lg:leading-6 px-8 bg-transparent border border border-indigo-700 border border-indigo-700 text-indigo-700 text-text-indigo-700 hover:opacity-75 lg:text-2xl text-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700">Advance Search</button>
-          </div>-->
-      </div>
+        </h2>
+        <div class="flex flex-col w-full sm:w-1/2 md:ml-4 mt-3 md:mt-10">
+            <div class="relative w-full">
+                <div class="absolute inset-0 mt-0 mt-8 w-16 text-gray-700 flex items-center pl-6 h-full lg:py-5 z-20">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                        <circle cx="11.6667" cy="11.6667" r="8.16667" stroke="#4A5568" stroke-width="1.75"
+                                stroke-linecap="round" stroke-linejoin="round"></circle>
+                        <path d="M24.5 24.5L17.5 17.5" stroke="#4A5568" stroke-width="1.75" stroke-linecap="round"
+                              stroke-linejoin="round"></path>
+                    </svg>
+                </div>
+                <input id="search"
+                       class="w-full text-text-gray-600 focus:outline-none focus:border font-normal pl-16 pr-24 lg:py-5 py-2 placeholder-gray-600 flex items-center text-2xl border-gray-600 rounded border relative z-10"
+                       placeholder="Search">
+
+                <!-- search results -->
+                <div id="search-results"
+                     class="absolute shadow bg-white top-100 mt-2 z-40 w-full lef-0 rounded max-h-select overflow-y-auto hidden">
+                    <div class="flex flex-col w-full">
+                        <div class="cursor-pointer w-full border-gray-100 border-b hover:bg-blue-50">
+                            <div class="flex w-full items-center p-2 pl-2 border-transparent border-l-2 relative hover:border-teal-100">
+                                <div class="w-6 flex flex-col items-center">
+                                    <div class="flex relative w-5 h-5 bg-orange-500 justify-center items-center m-1 mr-2 w-4 h-4 mt-1 rounded-full ">
+                                        <img class="rounded-full" alt="A" x-bind:src="option.picture.thumbnail"
+                                             src="https://randomuser.me/api/portraits/thumb/men/81.jpg"></div>
+                                </div>
+                                <div class="w-full items-center flex">
+                                    <div class="mx-2 -mt-1"><span x-text="option.name.first + ' ' + option.name.last">Sidar Haringa</span>
+                                        <div class="text-xs truncate w-full normal-case font-normal -mt-1 text-gray-500"
+                                             x-text="option.email">sidar.haringa@example.com
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
 
-            <!-- Code block ends -->
+                    </div>
+                </div>
+                <!-- end search results -->
+
+            </div>
         </div>
+        <!--<div class="sm:flex justify-center items-center pt-12">
+            <button class="w-full sm:w-auto py-3 text-center lg:leading-6 px-8 bg-indigo-700 text-white lg:text-2xl border border border-indigo-700 hover:opacity-75 text-lg mr-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700">Search</button>
+            <button class="w-full sm:w-auto mt-4 sm:mt-0 py-3 text-center lg:leading-6 px-8 bg-transparent border border border-indigo-700 border border-indigo-700 text-indigo-700 text-text-indigo-700 hover:opacity-75 lg:text-2xl text-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700">Advance Search</button>
+        </div>-->
+    </div>
+
+
+    <!-- Code block ends -->
+</div>
 
 <!-- your content here... -->
 </body>
 <!-- your content here... -->
-<style>
-    /* Navbar */
-    .top-100 {
-        animation: slideDown 0.5s ease-in-out;
-    }
 
-    @keyframes slideDown {
-        0% {
-            top: -50%;
-        }
-        100% {
-            top: 0;
-        }
-    }
-
-    * {
-        outline: none !important;
-        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-        -webkit-tap-highlight-color: transparent;
-    }
-</style>
 
 <script>
     function dropdownHandler(element) {
-    let single = element.getElementsByTagName("ul")[0];
-    single.classList.toggle("hidden");
-}
-function MenuHandler(el, val) {
-    let MainList = el.parentElement.parentElement.getElementsByTagName("ul")[0];
-    let closeIcon = el.parentElement.parentElement.getElementsByClassName("close-m-menu")[0];
-    let showIcon = el.parentElement.parentElement.getElementsByClassName("show-m-menu")[0];
-    if (val) {
-        MainList.classList.remove("hidden");
-        el.classList.add("hidden");
-        closeIcon.classList.remove("hidden");
-    } else {
-        showIcon.classList.remove("hidden");
-        MainList.classList.add("hidden");
-        el.classList.add("hidden");
+        let single = element.getElementsByTagName("ul")[0];
+        single.classList.toggle("hidden");
     }
-}
-// ------------------------------------------------------
-let sideBar = document.getElementById("mobile-nav");
-let menu = document.getElementById("menu");
-let cross = document.getElementById("cross");
-const sidebarHandler = (check) => {
-    if (check) {
-        sideBar.style.transform = "translateX(0px)";
-        menu.classList.add("hidden");
-        cross.classList.remove("hidden");
-    } else {
-        sideBar.style.transform = "translateX(-100%)";
-        menu.classList.remove("hidden");
-        cross.classList.add("hidden");
+
+    function MenuHandler(el, val) {
+        let MainList = el.parentElement.parentElement.getElementsByTagName("ul")[0];
+        let closeIcon = el.parentElement.parentElement.getElementsByClassName("close-m-menu")[0];
+        let showIcon = el.parentElement.parentElement.getElementsByClassName("show-m-menu")[0];
+        if (val) {
+            MainList.classList.remove("hidden");
+            el.classList.add("hidden");
+            closeIcon.classList.remove("hidden");
+        } else {
+            showIcon.classList.remove("hidden");
+            MainList.classList.add("hidden");
+            el.classList.add("hidden");
+        }
     }
-};
-let list = document.getElementById("list");
-let chevrondown = document.getElementById("chevrondown");
-let chevronup = document.getElementById("chevronup");
-const listHandler = (check) => {
-    if (check) {
-        list.classList.remove("hidden");
-        chevrondown.classList.remove("hidden");
-        chevronup.classList.add("hidden");
-    } else {
-        list.classList.add("hidden");
-        chevrondown.classList.add("hidden");
-        chevronup.classList.remove("hidden");
-    }
-};
+
+    // ------------------------------------------------------
+    let sideBar = document.getElementById("mobile-nav");
+    let menu = document.getElementById("menu");
+    let cross = document.getElementById("cross");
+    const sidebarHandler = (check) => {
+        if (check) {
+            sideBar.style.transform = "translateX(0px)";
+            menu.classList.add("hidden");
+            cross.classList.remove("hidden");
+        } else {
+            sideBar.style.transform = "translateX(-100%)";
+            menu.classList.remove("hidden");
+            cross.classList.add("hidden");
+        }
+    };
+    let list = document.getElementById("list");
+    let chevrondown = document.getElementById("chevrondown");
+    let chevronup = document.getElementById("chevronup");
+    const listHandler = (check) => {
+        if (check) {
+            list.classList.remove("hidden");
+            chevrondown.classList.remove("hidden");
+            chevronup.classList.add("hidden");
+        } else {
+            list.classList.add("hidden");
+            chevrondown.classList.add("hidden");
+            chevronup.classList.remove("hidden");
+        }
+    };
+
+    $("#search").click(()=>{
+        $("#search-results").removeClass("hidden");
+    })
 </script>
 
-</body>
 </html>
