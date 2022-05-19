@@ -60,22 +60,25 @@
                 <div id="search-results"
                      class="absolute shadow bg-white top-100 mt-2 z-40 w-full lef-0 rounded max-h-select overflow-y-auto hidden">
                     <div class="flex flex-col w-full">
+
+                        <!--single result -->
                         <div class="cursor-pointer w-full border-gray-100 border-b hover:bg-blue-50">
                             <div class="flex w-full items-center p-2 pl-2 border-transparent border-l-2 relative hover:border-teal-100">
                                 <div class="w-6 flex flex-col items-center">
                                     <div class="flex relative w-5 h-5 bg-orange-500 justify-center items-center m-1 mr-2 w-4 h-4 mt-1 rounded-full ">
-                                        <img class="rounded-full" alt="A" x-bind:src="option.picture.thumbnail"
+                                        <img class="rounded-full" alt="A"
                                              src="https://randomuser.me/api/portraits/thumb/men/81.jpg"></div>
                                 </div>
                                 <div class="w-full items-center flex">
-                                    <div class="mx-2 -mt-1"><span x-text="option.name.first + ' ' + option.name.last">Sidar Haringa</span>
-                                        <div class="text-xs truncate w-full normal-case font-normal -mt-1 text-gray-500"
-                                             x-text="option.email">sidar.haringa@example.com
+                                    <div class="mx-2 -mt-1"><span>Sidar Haringa</span>
+                                        <div class="text-xs truncate w-full normal-case font-normal -mt-1 text-gray-500">
+                                            sidar.haringa@example.com
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- end single result -->
 
 
                     </div>
@@ -150,8 +153,20 @@
         }
     };
 
-    $("#search").click(()=>{
+
+    async function fetchText() {
+        let response = await fetch('/api/footprints');
+        return await response.text();
+    }
+
+
+    $("#search").click(async () => {
         $("#search-results").removeClass("hidden");
+
+        const data = await fetchText();
+        $('#search-results').html(data);
+        $('#search-results').removeClass('hidden');
+
     })
 </script>
 
