@@ -20,6 +20,7 @@ from footprint_app import views
 
 urlpatterns = [
     path('', views.home),
+    path('api/footprints', views.get_footprints),
     path('hello', views.hello),
     path('admin/', admin.site.urls),
 ]
