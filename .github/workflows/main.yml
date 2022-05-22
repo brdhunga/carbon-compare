@@ -22,7 +22,7 @@ jobs:
       - run: echo "$NAME"
       - uses: actions/checkout@v2
       - uses: superfly/flyctl-actions/setup-flyctl@master
-      - run: flyctl secrets set MY_SECRET=romance && flyctl deploy --remote-only
+      - run: flyctl secrets set DATABASE_UR=${{ secrets.DATABASE_URL }} && flyctl deploy --remote-only
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
