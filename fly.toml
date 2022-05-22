@@ -9,7 +9,7 @@ processes = []
 [env]
   PORT = "8080"
   NAME = "this and that"
-  DATABASE_URL = ${{ secrets.DATABASE_URL }}
+  DATABASE_URL = '${{ secrets.DATABASE_URL }}'
 
 [experimental]
   allowed_public_ports = []
