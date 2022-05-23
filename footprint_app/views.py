@@ -10,7 +10,8 @@ from footprint_app.models import FootPrint
 
 def home(request: HttpRequest) -> HttpResponse:
     """"""
-    return render(request, 'home.html')
+    user_authenticated = request.user.is_authenticated
+    return render(request, 'home.html', {'is_authenticated': user_authenticated})
 
 
 def hello(request: HttpRequest) -> HttpResponse:
@@ -44,3 +45,8 @@ def get_footprints(request: HttpRequest) -> HttpResponse:
         full_raw_string += _template.format(f.title, f.description)
     # footprints_dict = [model_to_dict(i) for i in footprints]
     return HttpResponse(full_raw_string)
+
+
+def add_carbon_record(request: HttpRequest) -> HttpResponse:
+    """"""
+    return HttpResponse("I will add carbon footprint here.")
