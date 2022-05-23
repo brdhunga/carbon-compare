@@ -15,12 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from footprint_app import views
-
+from footprint_app import views as carbon_views
+from custom_user import views as user_views
 
 urlpatterns = [
-    path('', views.home),
-    path('api/footprints', views.get_footprints),
-    path('hello', views.hello),
+    path('', carbon_views.home, name="index"),
+    path('api/footprints', carbon_views.get_footprints),
+    path("add", carbon_views.add_carbon_record),
+    path('hello', carbon_views.hello),
+    # admin
     path('admin/', admin.site.urls),
+    # auth login
+    path("login", user_views.login, name="login"),
+    path("logout", user_views.logout, name="logout"),
+    path("callback", user_views.callback, name="callback"),
+    path("check", user_views.check_login),
 ]

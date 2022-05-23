@@ -14,6 +14,8 @@ from pathlib import Path
 import os 
 import dj_database_url
 
+from dotenv import load_dotenv, find_dotenv
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -29,7 +31,9 @@ DEBUG = os.environ.get('DEBUG', 'False') in ['True', 'TRUE']
 
 ALLOWED_HOSTS = ['*']
 
-
+ENV_FILE = find_dotenv()
+if ENV_FILE:
+    load_dotenv(ENV_FILE)
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'footprint_app',
+    'custom_user',
+
 ]
 
 MIDDLEWARE = [
@@ -135,3 +141,8 @@ STATIC_ROOT = Path(BASE_DIR) / 'staticfiles'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# custom user
+AUTH_USER_MODEL = 'custom_user.CustomUser'
+AUTH0_DOMAIN = os.environ.get("AUTH0_DOMAIN")
+AUTH0_CLIENT_ID = os.environ.get("AUTH0_CLIENT_ID")
+AUTH0_CLIENT_SECRET = os.environ.get("AUTH0_CLIENT_SECRET")
