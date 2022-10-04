@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'footprint_app',
     'custom_user',
+    'shipments'
 
 ]
 

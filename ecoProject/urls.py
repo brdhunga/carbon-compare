@@ -18,6 +18,9 @@ from django.urls import path
 from footprint_app import views as carbon_views
 from custom_user import views as user_views
 
+from shipments.views import home as shipments_home
+
+
 urlpatterns = [
     path('', carbon_views.home, name="index"),
     path('api/footprints', carbon_views.get_footprints),
@@ -30,4 +33,6 @@ urlpatterns = [
     path("logout", user_views.logout, name="logout"),
     path("callback", user_views.callback, name="callback"),
     path("check", user_views.check_login),
+    # 
+    path("shipments", shipments_home),
 ]
